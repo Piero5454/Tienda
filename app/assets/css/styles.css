@@ -126,6 +126,12 @@ body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-in
 .pos .ticket li{display:flex; justify-content:space-between; gap:8px; font-variant-numeric:tabular-nums}
 .pos .ticket .total{display:flex; justify-content:space-between; border-top:1px dashed var(--line); padding-top:8px; font:700 16px/1 var(--f-display); font-variant-numeric:tabular-nums}
 .pos .ticket .pay{background:var(--accent); color:var(--accent-ink); border-radius:6px; text-align:center; padding:8px; font-weight:600; font-size:12px}
+@media (max-width:560px){
+  .pos{grid-template-columns:1fr; grid-template-rows:auto 1fr}
+  .pos .item:nth-child(n+4){display:none}
+  .pos .ticket ul{gap:4px}
+}
+@media (max-width:420px){ .phone + .phone{display:none} }
 
 
 /* Sections */
@@ -205,6 +211,7 @@ textarea{min-height:110px; resize:vertical}
 .btn:disabled{opacity:.6; cursor:wait; transform:none}
 .hp{position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden}
 @media (max-width:900px){ .contact{grid-template-columns:1fr} }
+@media (max-width:760px){ input,select,textarea{font-size:16px} }
 
 footer{border-top:1px solid var(--line); padding-block:28px; font-size:var(--s-sm); color:var(--muted)}
 footer .wrap{display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px}
