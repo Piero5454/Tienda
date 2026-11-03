@@ -5,6 +5,7 @@
     <ServicesSection />
     <ExamplesSection />
     <ProcessSection />
+    <AboutSection />
     <StackSection />
     <FaqSection />
     <ContactSection />

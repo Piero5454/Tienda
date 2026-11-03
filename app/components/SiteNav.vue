@@ -6,6 +6,7 @@
         <li><a href="#servicios">Servicios</a></li>
         <li><a href="#ejemplos">Ejemplos</a></li>
         <li><a href="#proceso">Proceso</a></li>
+        <li><a href="#sobre-mi">Sobre mí</a></li>
         <li><a href="#preguntas">Preguntas</a></li>
       </ul>
       <a class="btn btn-primary" href="#contacto">Cotizar proyecto</a>
