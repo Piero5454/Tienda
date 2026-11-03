@@ -149,6 +149,7 @@ onMounted(() => {
           <li>Primera reunión sin costo</li>
           <li>Presupuesto cerrado en pesos chilenos</li>
         </ul>
+        <p class="wa-alt">¿Prefieres conversar por chat? <a :href="whatsappUrl('Hola, vi tu página y me gustaría cotizar un proyecto.')" target="_blank" rel="noopener">Escríbeme por WhatsApp</a></p>
       </div>
       <form novalidate @submit.prevent="onSubmit">
         <div class="field">
