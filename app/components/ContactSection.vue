@@ -10,6 +10,14 @@ const tipos = [
   { id: 't-pos', value: 'Punto de venta' }
 ]
 
+const origenes = [
+  'Google',
+  'Instagram o Facebook',
+  'Recomendación de alguien',
+  'WhatsApp',
+  'Otro'
+]
+
 const form = reactive({
   nombre: '',
   correo: '',
@@ -17,6 +25,7 @@ const form = reactive({
   empresa: '',
   tipos: ['Sitio web'] as string[],
   mensaje: '',
+  origen: '',
   honey: ''
 })
 
@@ -54,7 +63,8 @@ async function onSubmit() {
     Teléfono: form.telefono.trim() || '—',
     Empresa: form.empresa.trim() || '—',
     Necesita: form.tipos.join(', ') || 'Sin especificar',
-    Mensaje: form.mensaje.trim() || '—'
+    Mensaje: form.mensaje.trim() || '—',
+    'Nos conoció por': form.origen || 'Sin especificar'
   }
 
   estado.value = 'enviando'
@@ -78,7 +88,7 @@ async function onSubmit() {
   if (data.success === true || data.success === 'true') {
     estado.value = 'ok'
     aviso.value = `¡Gracias, ${nombre}! Recibí tu mensaje y te responderé a ${correo} dentro de 24 horas hábiles.`
-    Object.assign(form, { nombre: '', correo: '', telefono: '', empresa: '', mensaje: '', tipos: ['Sitio web'] })
+    Object.assign(form, { nombre: '', correo: '', telefono: '', empresa: '', mensaje: '', origen: '', tipos: ['Sitio web'] })
     return
   }
 
@@ -159,6 +169,13 @@ onMounted(() => {
         <div class="field">
           <label for="mensaje">Cuéntame tu idea</label>
           <textarea id="mensaje" v-model="form.mensaje" name="mensaje" placeholder="Ej: Tengo un minimarket y quiero una caja que controle el stock y emita boletas."></textarea>
+        </div>
+        <div class="field">
+          <label for="origen">¿Cómo llegaste aquí? (opcional)</label>
+          <select id="origen" v-model="form.origen" name="origen">
+            <option value="">Elige una opción</option>
+            <option v-for="o in origenes" :key="o" :value="o">{{ o }}</option>
+          </select>
         </div>
         <!-- Campo trampa para bots: las personas no lo ven -->
         <div class="hp" aria-hidden="true">
