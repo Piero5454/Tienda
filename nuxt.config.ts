@@ -1,4 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import { rubros } from './shared/rubros'
 
 // URL pública del sitio (para Google y vistas previas al compartir).
 // Render la entrega en RENDER_EXTERNAL_URL; con dominio propio, define NUXT_PUBLIC_SITE_URL.
@@ -17,6 +18,8 @@ export default defineNuxtConfig({
   compatibilityDate: '2026-11-01',
   devtools: { enabled: false },
   css: ['~/assets/css/styles.css'],
+  runtimeConfig: { public: { siteUrl } },
+  nitro: { prerender: { routes: rubros.map(r => `/${r.slug}`) } },
   hooks: {
     // Al generar el sitio, crea sitemap.xml y apunta robots.txt hacia él
     // (requiere conocer la URL pública: RENDER_EXTERNAL_URL o NUXT_PUBLIC_SITE_URL).
@@ -26,8 +29,10 @@ export default defineNuxtConfig({
       const { join } = await import('node:path')
       const dir = nitro.options.output.publicDir
       const hoy = new Date().toISOString().slice(0, 10)
+      const urls = ['', ...rubros.map(r => r.slug)]
+        .map(p => `  <url><loc>${abs(p)}</loc><lastmod>${hoy}</lastmod></url>`).join('\n')
       await writeFile(join(dir, 'sitemap.xml'),
-        `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url><loc>${abs('')}</loc><lastmod>${hoy}</lastmod></url>\n</urlset>\n`)
+        `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`)
       await writeFile(join(dir, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${abs('sitemap.xml')}\n`)
     }
   },
@@ -57,7 +62,7 @@ export default defineNuxtConfig({
       ],
       link: [
         { rel: 'icon', type: 'image/svg+xml', href: `${baseURL}favicon.svg` },
-        ...(siteUrl ? [{ rel: 'canonical', href: abs('') }] : []),
+        ...(siteUrl ? [{ rel: 'canonical', href: abs(''), key: 'canonical' }] : []),
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
         { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap' }

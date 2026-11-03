@@ -8,7 +8,9 @@ const examples = [
     problema: 'Las ventas se anotan en un cuaderno, no se sabe qué productos faltan y cuadrar la caja toma media hora cada noche.',
     solucion: 'Caja en un tablet con lector de código de barras, boleta y pago con tarjeta, stock que se descuenta solo y cierre de caja en un clic.',
     incluye: ['Carga de productos desde Excel', 'Aviso de productos por agotarse', 'Resumen de ventas diario'],
-    plazo: '3 semanas'
+    plazo: '3 semanas',
+    rubro: 'almacenes',
+    enlace: 'Ver más para almacenes'
   },
   {
     tipo: 'Sitio web',
@@ -16,7 +18,9 @@ const examples = [
     problema: 'Los pedidos llegan por WhatsApp e Instagram, se pierden mensajes y hay que confirmar cada pago a mano.',
     solucion: 'Tienda online con catálogo, pago con Webpay y elección de fecha de retiro o despacho. Cada pedido llega ordenado a un solo lugar.',
     incluye: ['Catálogo editable por la dueña', 'Pago online y confirmación automática', 'Aparece en Google Maps y búsquedas locales'],
-    plazo: '4 semanas'
+    plazo: '4 semanas',
+    rubro: 'pastelerias',
+    enlace: 'Ver más para pastelerías'
   },
   {
     tipo: 'App',
@@ -24,7 +28,9 @@ const examples = [
     problema: 'Las horas se agendan por teléfono, hay clientes que no llegan y nadie recuerda quién tiene hora mañana.',
     solucion: 'App de reservas donde el cliente elige servicio y hora, recibe un recordatorio y el negocio ve su agenda del día en el celular.',
     incluye: ['Recordatorio automático al cliente', 'Agenda por profesional', 'Historial de cada cliente'],
-    plazo: '8 semanas'
+    plazo: '8 semanas',
+    rubro: 'peluquerias',
+    enlace: 'Ver más para peluquerías'
   }
 ]
 </script>
@@ -53,6 +59,7 @@ const examples = [
             <li v-for="i in e.incluye" :key="i">{{ i }}</li>
           </ul>
           <div class="spec"><span>Plazo estimado</span><b>{{ e.plazo }}</b></div>
+          <NuxtLink class="ex-more" :to="`/${e.rubro}`">{{ e.enlace }} →</NuxtLink>
         </article>
       </div>
     </div>

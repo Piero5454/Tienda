@@ -4,6 +4,14 @@
 // de activación a esta dirección: hay que confirmarlo para empezar a recibir mensajes.
 const EMAIL = 'piero5454@gmail.com'
 
+// En las páginas por rubro se marca de entrada lo que suele necesitar ese negocio
+// y se anota en el correo desde qué página escribió.
+const props = withDefaults(defineProps<{ tipoInicial?: string; pagina?: string; mensajeEjemplo?: string }>(), {
+  tipoInicial: 'Sitio web',
+  pagina: '',
+  mensajeEjemplo: 'Ej: Tengo un minimarket y quiero una caja que controle el stock y emita boletas.'
+})
+
 const tipos = [
   { id: 't-web', value: 'Sitio web' },
   { id: 't-app', value: 'App' },
@@ -23,7 +31,7 @@ const form = reactive({
   correo: '',
   telefono: '',
   empresa: '',
-  tipos: ['Sitio web'] as string[],
+  tipos: [props.tipoInicial] as string[],
   mensaje: '',
   origen: '',
   honey: ''
@@ -53,7 +61,7 @@ async function onSubmit() {
   }
 
   const datos: Record<string, string> = {
-    _subject: `Nuevo contacto web: ${nombre}`,
+    _subject: `Nuevo contacto web${props.pagina ? ` (${props.pagina})` : ''}: ${nombre}`,
     _template: 'table',
     _captcha: 'false',
     _replyto: correo,
@@ -64,7 +72,8 @@ async function onSubmit() {
     Empresa: form.empresa.trim() || '—',
     Necesita: form.tipos.join(', ') || 'Sin especificar',
     Mensaje: form.mensaje.trim() || '—',
-    'Nos conoció por': form.origen || 'Sin especificar'
+    'Nos conoció por': form.origen || 'Sin especificar',
+    'Escribió desde': props.pagina || 'Página principal'
   }
 
   estado.value = 'enviando'
@@ -88,7 +97,7 @@ async function onSubmit() {
   if (data.success === true || data.success === 'true') {
     estado.value = 'ok'
     aviso.value = `¡Gracias, ${nombre}! Recibí tu mensaje y te responderé a ${correo} dentro de 24 horas hábiles.`
-    Object.assign(form, { nombre: '', correo: '', telefono: '', empresa: '', mensaje: '', origen: '', tipos: ['Sitio web'] })
+    Object.assign(form, { nombre: '', correo: '', telefono: '', empresa: '', mensaje: '', origen: '', tipos: [props.tipoInicial] })
     return
   }
 
@@ -168,7 +177,7 @@ onMounted(() => {
         </fieldset>
         <div class="field">
           <label for="mensaje">Cuéntame tu idea</label>
-          <textarea id="mensaje" v-model="form.mensaje" name="mensaje" placeholder="Ej: Tengo un minimarket y quiero una caja que controle el stock y emita boletas."></textarea>
+          <textarea id="mensaje" v-model="form.mensaje" name="mensaje" :placeholder="mensajeEjemplo"></textarea>
         </div>
         <div class="field">
           <label for="origen">¿Cómo llegaste aquí? (opcional)</label>
