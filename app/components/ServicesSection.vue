@@ -1,12 +1,13 @@
 <script setup lang="ts">
 // Precios de referencia en CLP, sin IVA. Ajústalos a tus valores reales.
+// Deja price vacío ('') para mostrar "A cotizar".
 const services = [
   {
     tag: '/web', title: 'Sitios web', time: '2 a 4 semanas', price: '$250.000',
     items: ['Páginas para que tus clientes te encuentren en Google', 'Tiendas online con pago por Webpay, Mercado Pago o Flow', 'Se ven y cargan rápido en cualquier celular', 'Tú mismo cambias textos, fotos, precios y productos']
   },
   {
-    tag: '/app', title: 'Aplicaciones', time: '6 a 12 semanas', price: '$1.800.000',
+    tag: '/app', title: 'Aplicaciones', time: '6 a 12 semanas', price: '',
     items: ['Una sola app para iPhone y Android', 'Pedidos, reservas, inventario o rutas de reparto', 'Avisos al celular, cuentas de usuario y pagos', 'Me encargo de publicarla en App Store y Google Play']
   },
   {
@@ -28,7 +29,8 @@ const services = [
         <article v-for="s in services" :key="s.tag" class="svc">
           <span class="tag">{{ s.tag }}</span>
           <h3>{{ s.title }}</h3>
-          <p class="price"><small>Desde</small> {{ s.price }} <small>+ IVA</small></p>
+          <p v-if="s.price" class="price"><small>Desde</small> {{ s.price }} <small>+ IVA</small></p>
+          <p v-else class="price">A cotizar</p>
           <ul>
             <li v-for="i in s.items" :key="i">{{ i }}</li>
           </ul>
