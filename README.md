@@ -18,3 +18,12 @@ js/main.js      Selector Web/App/Dashboard y formulario de contacto por WhatsApp
 - Nombre de la marca, correo y WhatsApp: en `index.html`.
 - Número de WhatsApp del formulario: variable `WHATSAPP` en `js/main.js`.
 - Colores y tipografías: variables al inicio de `css/styles.css`.
+
+## Desarrollo local
+
+```
+npm install
+npm run dev
+```
+
+Abre http://localhost:3000
