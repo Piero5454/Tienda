@@ -43,35 +43,79 @@ async function onSubmit() {
     return
   }
 
+  const datos: Record<string, string> = {
+    _subject: `Nuevo contacto web: ${nombre}`,
+    _template: 'table',
+    _captcha: 'false',
+    _replyto: correo,
+    _honey: form.honey,
+    Nombre: nombre,
+    Correo: correo,
+    Teléfono: form.telefono.trim() || '—',
+    Empresa: form.empresa.trim() || '—',
+    Necesita: form.tipos.join(', ') || 'Sin especificar',
+    Mensaje: form.mensaje.trim() || '—'
+  }
+
   estado.value = 'enviando'
   aviso.value = ''
+
+  let data: { success?: string | boolean; message?: string }
   try {
     const res = await fetch(`https://formsubmit.co/ajax/${EMAIL}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify({
-        _subject: `Nuevo contacto web: ${nombre}`,
-        _template: 'table',
-        _replyto: correo,
-        _honey: form.honey,
-        Nombre: nombre,
-        Correo: correo,
-        Teléfono: form.telefono.trim() || '—',
-        Empresa: form.empresa.trim() || '—',
-        Necesita: form.tipos.join(', ') || 'Sin especificar',
-        Mensaje: form.mensaje.trim() || '—'
-      })
+      body: JSON.stringify(datos)
     })
-    const data = await res.json().catch(() => ({}))
-    if (!res.ok || data.success === 'false' || data.success === false) throw new Error(data.message)
+    data = await res.json()
+  } catch {
+    // La petición en segundo plano fue bloqueada (Cloudflare, CORS, red):
+    // se envía como formulario tradicional, que FormSubmit siempre acepta.
+    envioTradicional(datos)
+    return
+  }
+
+  if (data.success === true || data.success === 'true') {
     estado.value = 'ok'
     aviso.value = `¡Gracias, ${nombre}! Recibí tu mensaje y te responderé a ${correo} dentro de 24 horas hábiles.`
     Object.assign(form, { nombre: '', correo: '', telefono: '', empresa: '', mensaje: '', tipos: ['Sitio web'] })
-  } catch {
-    estado.value = 'error'
-    aviso.value = 'No se pudo enviar el mensaje. Revisa tu conexión e inténtalo de nuevo en unos minutos.'
+    return
   }
+
+  estado.value = 'error'
+  aviso.value = /activat/i.test(data.message || '')
+    ? 'El formulario aún no está activado. Revisa el correo de FormSubmit en la bandeja del dueño del sitio (y en spam) y haz clic en "Activate Form".'
+    : `No se pudo enviar el mensaje${data.message ? `: ${data.message}` : ''}. Inténtalo de nuevo en unos minutos.`
 }
+
+function envioTradicional(datos: Record<string, string>) {
+  const f = document.createElement('form')
+  f.method = 'POST'
+  f.action = `https://formsubmit.co/${EMAIL}`
+  const volver = new URL(window.location.href)
+  volver.hash = 'contacto'
+  volver.searchParams.set('enviado', '1')
+  for (const [name, value] of Object.entries({ ...datos, _next: volver.toString() })) {
+    const i = document.createElement('input')
+    i.type = 'hidden'
+    i.name = name
+    i.value = value
+    f.appendChild(i)
+  }
+  document.body.appendChild(f)
+  f.submit()
+}
+
+// Al volver del envío tradicional, FormSubmit redirige con ?enviado=1
+onMounted(() => {
+  const url = new URL(window.location.href)
+  if (url.searchParams.get('enviado') === '1') {
+    estado.value = 'ok'
+    aviso.value = '¡Gracias! Recibí tu mensaje y te responderé dentro de 24 horas hábiles.'
+    url.searchParams.delete('enviado')
+    history.replaceState(null, '', url.toString())
+  }
+})
 </script>
 
 <template>
