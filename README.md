@@ -21,6 +21,10 @@ public/                         Archivos que se copian tal cual (incluye .nojeky
 - Correo que recibe los mensajes del formulario: constante `EMAIL` en `app/components/ContactSection.vue`.
   Los envíos pasan por [FormSubmit](https://formsubmit.co): el primer mensaje dispara un correo de activación que hay que confirmar.
 - Servicios, proceso, tecnologías y preguntas: arreglos al inicio de cada componente.
+- Precios de referencia ("Desde $X + IVA"): campo `price` en `app/components/ServicesSection.vue`.
+- Ejemplos de proyectos: arreglo `examples` en `app/components/ExamplesSection.vue` (son ilustrativos; reemplázalos por casos reales cuando los tengas).
+- Título, descripción para Google e imagen al compartir: `nuxt.config.ts` y `public/og.png`.
+- URL pública (para Google y vistas previas): Render la entrega sola; con dominio propio, define `NUXT_PUBLIC_SITE_URL` en Render.
 - Colores y tipografías: variables al inicio de `app/assets/css/styles.css`.
 
 ## Desarrollo local

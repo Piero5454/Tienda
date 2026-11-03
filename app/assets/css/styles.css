@@ -145,6 +145,23 @@ section{padding-block:clamp(56px,8vw,96px); border-top:1px solid var(--line)}
 .svc .spec{display:flex; justify-content:space-between; gap:12px; border-top:1px dashed var(--line); padding-top:14px; font-family:var(--f-mono); font-size:var(--s-xs); color:var(--muted)}
 .svc .spec b{color:var(--ink); font-weight:500}
 @media (max-width:900px){ .services{grid-template-columns:1fr} }
+.svc .price{font:700 1.35rem/1.1 var(--f-display); color:var(--ink); font-variant-numeric:tabular-nums}
+.svc .price small{font:500 var(--s-xs)/1 var(--f-mono); color:var(--muted); text-transform:uppercase; letter-spacing:.06em}
+.price-note{margin-top:18px; font-size:var(--s-sm); color:var(--muted)}
+
+.examples{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
+.ex{background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:26px; display:grid; grid-template-rows:auto auto auto auto 1fr auto; gap:14px}
+.ex .tag{font-family:var(--f-mono); font-size:var(--s-xs); color:var(--signal); text-transform:uppercase; letter-spacing:.06em}
+.ex h3{font-size:1.4rem}
+.ex-block{display:grid; gap:4px}
+.ex-block p{font-size:var(--s-sm)}
+.ex-block:first-of-type p{color:var(--muted)}
+.ex ul{margin:0; padding:0; list-style:none; display:grid; gap:8px; font-size:var(--s-sm); align-content:start}
+.ex li{display:flex; gap:10px}
+.ex li::before{content:"✓"; color:var(--accent); font-weight:700}
+.ex .spec{display:flex; justify-content:space-between; gap:12px; border-top:1px dashed var(--line); padding-top:14px; font-family:var(--f-mono); font-size:var(--s-xs); color:var(--muted)}
+.ex .spec b{color:var(--ink); font-weight:500}
+@media (max-width:900px){ .examples{grid-template-columns:1fr} }
 
 .steps{display:grid; grid-template-columns:repeat(4,1fr); gap:0; counter-reset:step; border:1px solid var(--line); border-radius:12px; overflow:hidden; background:var(--surface)}
 .step{padding:24px; border-right:1px solid var(--line); display:grid; gap:10px; align-content:start}
