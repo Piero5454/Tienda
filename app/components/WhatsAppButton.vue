@@ -9,6 +9,7 @@ const texto = computed(() => {
   if (r) return `Hola, vi la página para ${r.nombre.toLowerCase()} y me gustaría cotizar.`
   return 'Hola, vi tu página y me gustaría cotizar un proyecto.'
 })
+const { $evento } = useNuxtApp()
 const enDemo = computed(() => route.path.startsWith('/demo-punto-de-venta'))
 </script>
 
@@ -17,6 +18,7 @@ const enDemo = computed(() => route.path.startsWith('/demo-punto-de-venta'))
     class="wa-float" :class="{ 'wa-raise': enDemo }"
     :href="whatsappUrl(texto)" target="_blank" rel="noopener"
     aria-label="Escríbeme por WhatsApp"
+    @click="$evento?.('whatsapp')"
   >
     <svg viewBox="0 0 32 32" width="26" height="26" aria-hidden="true"><path fill="currentColor" d="M16.04 3C8.86 3 3.03 8.82 3.03 16c0 2.3.6 4.53 1.74 6.5L3 29l6.68-1.75A12.95 12.95 0 0 0 16.04 29C23.2 29 29 23.18 29 16S23.2 3 16.04 3Zm0 23.62c-1.98 0-3.9-.53-5.6-1.53l-.4-.24-3.96 1.04 1.06-3.86-.26-.4A10.6 10.6 0 0 1 5.4 16c0-5.86 4.77-10.62 10.64-10.62 5.86 0 10.6 4.76 10.6 10.62 0 5.87-4.75 10.62-10.6 10.62Zm5.83-7.95c-.32-.16-1.89-.93-2.18-1.04-.3-.1-.5-.16-.72.16-.21.32-.82 1.04-1.01 1.25-.19.21-.37.24-.69.08-.32-.16-1.35-.5-2.57-1.59-.95-.85-1.59-1.9-1.78-2.21-.18-.32-.02-.5.14-.65.15-.15.32-.37.48-.56.16-.18.21-.32.32-.53.1-.21.05-.4-.03-.56-.08-.16-.72-1.73-.98-2.37-.26-.62-.52-.54-.72-.55h-.61c-.21 0-.56.08-.85.4-.3.32-1.12 1.09-1.12 2.66s1.15 3.09 1.3 3.3c.17.21 2.26 3.45 5.47 4.84.77.33 1.36.53 1.83.68.77.24 1.47.2 2.02.12.62-.09 1.89-.77 2.16-1.52.26-.74.26-1.38.18-1.52-.08-.13-.29-.21-.61-.37Z"/></svg>
     <span>WhatsApp</span>

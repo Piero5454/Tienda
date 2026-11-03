@@ -18,7 +18,13 @@ export default defineNuxtConfig({
   compatibilityDate: '2026-11-01',
   devtools: { enabled: false },
   css: ['~/assets/css/styles.css'],
-  runtimeConfig: { public: { siteUrl } },
+  runtimeConfig: {
+    public: {
+      siteUrl,
+      // Código de tu cuenta GoatCounter (lo que va antes de .goatcounter.com). Vacío = sin contador.
+      goatcounter: ''
+    }
+  },
   nitro: { prerender: { routes: [...rubros.map(r => `/${r.slug}`), '/demo-punto-de-venta'] } },
   hooks: {
     // Al generar el sitio, crea sitemap.xml y apunta robots.txt hacia él

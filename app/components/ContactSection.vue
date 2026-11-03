@@ -37,6 +37,7 @@ const form = reactive({
   honey: ''
 })
 
+const { $evento } = useNuxtApp()
 const nombreInput = ref<HTMLInputElement | null>(null)
 const correoInput = ref<HTMLInputElement | null>(null)
 const estado = ref<'idle' | 'enviando' | 'ok' | 'error'>('idle')
@@ -95,6 +96,7 @@ async function onSubmit() {
   }
 
   if (data.success === true || data.success === 'true') {
+    $evento?.('formulario-enviado')
     estado.value = 'ok'
     aviso.value = `¡Gracias, ${nombre}! Recibí tu mensaje y te responderé a ${correo} dentro de 24 horas hábiles.`
     Object.assign(form, { nombre: '', correo: '', telefono: '', empresa: '', mensaje: '', origen: '', tipos: [props.tipoInicial] })
@@ -108,6 +110,7 @@ async function onSubmit() {
 }
 
 function envioTradicional(datos: Record<string, string>) {
+  $evento?.('formulario-enviado')
   const f = document.createElement('form')
   f.method = 'POST'
   f.action = `https://formsubmit.co/${EMAIL}`
@@ -149,7 +152,7 @@ onMounted(() => {
           <li>Primera reunión sin costo</li>
           <li>Presupuesto cerrado en pesos chilenos</li>
         </ul>
-        <p class="wa-alt">¿Prefieres conversar por chat? <a :href="whatsappUrl('Hola, vi tu página y me gustaría cotizar un proyecto.')" target="_blank" rel="noopener">Escríbeme por WhatsApp</a></p>
+        <p class="wa-alt">¿Prefieres conversar por chat? <a :href="whatsappUrl('Hola, vi tu página y me gustaría cotizar un proyecto.')" target="_blank" rel="noopener" @click="$evento?.('whatsapp')">Escríbeme por WhatsApp</a></p>
       </div>
       <form novalidate @submit.prevent="onSubmit">
         <div class="field">

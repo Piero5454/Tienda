@@ -41,6 +41,8 @@ const recibido = ref<number | null>(null)
 const boleta = ref<Venta | null>(null)
 const cajaCerrada = ref<{ ventas: number; total: number } | null>(null)
 let folio = 1040
+const { $evento } = useNuxtApp()
+let ventaContada = false
 
 const clp = (n: number) => '$' + Math.round(n).toLocaleString('es-CL')
 const hora = (d = new Date()) => d.toLocaleTimeString('es-CL', { hour: '2-digit', minute: '2-digit' })
@@ -149,6 +151,7 @@ function confirmar() {
   for (const l of lineas.value) l.p.stock -= l.cant
   ventas.value.push(v)
   boleta.value = v
+  if (!ventaContada) { $evento?.('demo-venta'); ventaContada = true }
   ticket.value = []
   cobrando.value = null
   recibido.value = null
