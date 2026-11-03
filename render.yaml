@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: tienda
+    runtime: static
+    buildCommand: npm ci && npm run generate
+    staticPublishPath: .output/public

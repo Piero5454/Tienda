@@ -2,12 +2,18 @@
   "name": "tienda",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "description": "Landing page de servicios web, apps y dashboards",
   "scripts": {
-    "dev": "serve -l 3000 .",
-    "start": "serve -l 3000 ."
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare && (test -z \"$RENDER\" || nuxt generate)"
   },
-  "devDependencies": {
-    "serve": "^14.2.6"
+  "dependencies": {
+    "nuxt": "^4.6.4",
+    "vue": "latest",
+    "vue-router": "latest"
   }
 }
