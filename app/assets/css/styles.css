@@ -254,3 +254,19 @@ footer .wrap{display:flex; flex-wrap:wrap; justify-content:space-between; gap:12
 .rubro-links{display:flex; flex-wrap:wrap; gap:12px}
 @media (max-width:900px){ .rubro-card{justify-self:stretch; max-width:none} .pains,.feats{grid-template-columns:1fr 1fr} }
 @media (max-width:640px){ .pains,.feats{grid-template-columns:1fr} }
+
+/* Demo punto de venta */
+.demo-head{padding-block:clamp(40px,6vw,72px) 28px}
+.demo-head h1{font-size:clamp(2rem,4.6vw,3.4rem); font-weight:800; margin-top:14px; max-width:20ch}
+.demo-head .lede{font-size:var(--s-md); color:var(--muted); max-width:62ch; margin-top:16px}
+.demo-steps{display:flex; flex-wrap:wrap; gap:8px 24px; margin:20px 0 0; padding:0; list-style:none; counter-reset:paso; font-size:var(--s-sm)}
+.demo-steps li{counter-increment:paso; display:flex; gap:8px; align-items:baseline}
+.demo-steps li::before{content:counter(paso); font:600 var(--s-xs)/1 var(--f-mono); color:var(--accent-ink); background:var(--accent); border-radius:999px; width:20px; height:20px; display:inline-grid; place-items:center; flex:none}
+.demo-app{padding-block:0 clamp(40px,6vw,64px); border-top:0}
+.demo-loading{border:1px dashed var(--line); border-radius:14px; padding:80px 16px; text-align:center; color:var(--muted)}
+.demo-cta .wrap{display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:24px}
+.demo-cta h2{font-size:var(--s-xl)}
+.demo-cta p{color:var(--muted); margin-top:10px; max-width:56ch}
+.demo-cta .cta{display:flex; flex-wrap:wrap; gap:12px}
+.svc-demo{font-size:var(--s-sm); font-weight:600; color:var(--accent); text-decoration:none}
+.svc-demo:hover{text-decoration:underline}

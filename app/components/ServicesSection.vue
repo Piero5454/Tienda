@@ -35,6 +35,7 @@ const services = [
             <li v-for="i in s.items" :key="i">{{ i }}</li>
           </ul>
           <div class="spec"><span>Plazo típico</span><b>{{ s.time }}</b></div>
+          <NuxtLink v-if="s.tag === '/pos'" class="svc-demo" to="/demo-punto-de-venta">Probar la demo →</NuxtLink>
         </article>
       </div>
       <p class="price-note">Precios de referencia. El valor final depende de lo que necesites y te lo envío cerrado, por escrito, antes de empezar.</p>

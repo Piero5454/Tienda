@@ -19,7 +19,7 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   css: ['~/assets/css/styles.css'],
   runtimeConfig: { public: { siteUrl } },
-  nitro: { prerender: { routes: rubros.map(r => `/${r.slug}`) } },
+  nitro: { prerender: { routes: [...rubros.map(r => `/${r.slug}`), '/demo-punto-de-venta'] } },
   hooks: {
     // Al generar el sitio, crea sitemap.xml y apunta robots.txt hacia él
     // (requiere conocer la URL pública: RENDER_EXTERNAL_URL o NUXT_PUBLIC_SITE_URL).
@@ -29,7 +29,7 @@ export default defineNuxtConfig({
       const { join } = await import('node:path')
       const dir = nitro.options.output.publicDir
       const hoy = new Date().toISOString().slice(0, 10)
-      const urls = ['', ...rubros.map(r => r.slug)]
+      const urls = ['', ...rubros.map(r => r.slug), 'demo-punto-de-venta']
         .map(p => `  <url><loc>${abs(p)}</loc><lastmod>${hoy}</lastmod></url>`).join('\n')
       await writeFile(join(dir, 'sitemap.xml'),
         `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`)
