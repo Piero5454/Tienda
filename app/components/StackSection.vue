@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const stack = ['React', 'Next.js', 'React Native', 'Node.js', 'PostgreSQL', 'Supabase', 'Firebase', 'Tailwind', 'Power BI', 'Google Sheets API', 'Webpay', 'Vercel']
+const stack = ['React', 'Next.js', 'React Native', 'Node.js', 'PostgreSQL', 'Supabase', 'Firebase', 'Tailwind', 'Google Sheets API', 'Webpay', 'Vercel']
 </script>
 
 <template>

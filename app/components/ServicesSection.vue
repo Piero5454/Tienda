@@ -9,8 +9,8 @@ const services = [
     items: ['Apps para iOS y Android con una sola base de código', 'Reservas, pedidos, inventario o fuerza de venta', 'Inicio de sesión, notificaciones y pagos', 'Publicación en App Store y Google Play']
   },
   {
-    tag: '/dashboard', title: 'Dashboards', time: '3 a 6 semanas',
-    items: ['Ventas, stock y finanzas en un solo panel', 'Conexión a Excel, Google Sheets, tu ERP o base de datos', 'Indicadores que se actualizan solos', 'Accesos por usuario y reportes exportables']
+    tag: '/pos', title: 'Puntos de venta', time: '2 a 5 semanas',
+    items: ['Caja simple para almacenes, minimarkets, cafeterías y ferias', 'Boleta electrónica y pago con tarjeta (Transbank, Mercado Pago o SumUp)', 'Control de stock con aviso de productos por agotarse', 'Cierre de caja y reporte de ventas del día']
   }
 ]
 </script>
@@ -21,7 +21,7 @@ const services = [
       <SectionHead
         label="Servicios"
         title="Tres formas de llevar tu negocio a la pantalla"
-        text="Cada proyecto parte de lo que necesitas resolver: vender más, ordenar tu operación o ver tus números con claridad."
+        text="Cada proyecto parte de lo que necesitas resolver: vender más, atender más rápido o tener tu negocio ordenado."
       />
       <div class="services">
         <article v-for="s in services" :key="s.tag" class="svc">

@@ -1,10 +1,22 @@
 <script setup lang="ts">
-type Kind = 'web' | 'app' | 'dash'
+type Kind = 'web' | 'app' | 'pos'
 
 const tabs: { k: Kind; label: string; dim: string; note: string }[] = [
   { k: 'web', label: 'Web', dim: '1440 px · escritorio', note: 'Ejemplo: sitio para un negocio local, con catálogo y contacto.' },
   { k: 'app', label: 'App', dim: '390 px · móvil', note: 'Ejemplo: app de pedidos y agenda para el día a día.' },
-  { k: 'dash', label: 'Dashboard', dim: '1280 px · panel interno', note: 'Ejemplo: panel de ventas y stock con datos ficticios.' }
+  { k: 'pos', label: 'Punto de venta', dim: 'Tablet o PC · caja', note: 'Ejemplo: caja para un almacén de barrio, con boleta y control de stock.' }
+]
+
+const products = [
+  { n: 'Pan amasado', v: '$900', sel: true },
+  { n: 'Leche 1 L', v: '$1.190', sel: true },
+  { n: 'Café 250 g', v: '$4.990', sel: true },
+  { n: 'Huevos x12', v: '$3.600' },
+  { n: 'Arroz 1 kg', v: '$1.490' },
+  { n: 'Bebida 1,5 L', v: '$1.790' },
+  { n: 'Aceite 1 L', v: '$2.990' },
+  { n: 'Azúcar 1 kg', v: '$1.250' },
+  { n: 'Fideos 400 g', v: '$890' }
 ]
 
 const active = ref<Kind>('web')
@@ -16,7 +28,7 @@ const current = computed(() => tabs.find(t => t.k === active.value)!)
     <div class="wrap">
       <div>
         <p class="label">Desarrollo a medida · Chile</p>
-        <h1 style="margin-top:16px">Tu idea, construida como <em>web, app</em> o dashboard.</h1>
+        <h1 style="margin-top:16px">Tu idea, construida como <em>web, app</em> o punto de venta.</h1>
         <p class="lede">Diseño y programo herramientas digitales que tu negocio usa todos los días. Sin plantillas genéricas y con un precio cerrado desde el inicio.</p>
         <div class="cta">
           <a class="btn btn-primary" href="#contacto">Cuéntame tu proyecto →</a>
@@ -82,21 +94,22 @@ const current = computed(() => tabs.find(t => t.k === active.value)!)
             </div>
           </div>
 
-          <div class="frame" :class="{ on: active === 'dash' }" id="f-dash" role="tabpanel" aria-labelledby="tab-dash">
+          <div class="frame" :class="{ on: active === 'pos' }" id="f-pos" role="tabpanel" aria-labelledby="tab-pos">
             <div class="browser">
-              <div class="bar"><b></b><b></b><b></b><span class="url">panel.tunegocio.cl/ventas</span></div>
-              <div class="dash">
-                <div class="kpi"><small>Ventas mes</small><strong>$12,4 M</strong><em>▲ 8,2%</em></div>
-                <div class="kpi"><small>Ticket prom.</small><strong>$38.600</strong><em>▲ 3,1%</em></div>
-                <div class="kpi"><small>Stock bajo</small><strong>14 SKU</strong><em style="color:var(--signal)">Revisar</em></div>
-                <div class="chart">
-                  <svg viewBox="0 0 320 150" preserveAspectRatio="none" aria-label="Gráfico de ejemplo de ventas semanales">
-                    <g stroke="var(--line)" stroke-width="1">
-                      <line x1="0" y1="30" x2="320" y2="30" /><line x1="0" y1="70" x2="320" y2="70" /><line x1="0" y1="110" x2="320" y2="110" />
-                    </g>
-                    <path d="M0,120 L40,108 L80,112 L120,90 L160,94 L200,70 L240,62 L280,44 L320,36 L320,150 L0,150 Z" fill="var(--accent)" opacity=".14" />
-                    <path d="M0,120 L40,108 L80,112 L120,90 L160,94 L200,70 L240,62 L280,44 L320,36" fill="none" stroke="var(--accent)" stroke-width="2.5" vector-effect="non-scaling-stroke" />
-                  </svg>
+              <div class="bar"><b></b><b></b><b></b><span class="url">Caja 1 · Almacén Don Pedro</span></div>
+              <div class="pos">
+                <div class="grid">
+                  <div v-for="p in products" :key="p.n" class="item" :class="{ sel: p.sel }"><b>{{ p.n }}</b><span>{{ p.v }}</span></div>
+                </div>
+                <div class="ticket">
+                  <div class="t">Venta actual</div>
+                  <ul>
+                    <li><span>2 × Pan amasado</span><span>$1.800</span></li>
+                    <li><span>1 × Leche 1 L</span><span>$1.190</span></li>
+                    <li><span>1 × Café 250 g</span><span>$4.990</span></li>
+                  </ul>
+                  <div class="total"><span>Total</span><span>$7.980</span></div>
+                  <div class="pay">Cobrar · Boleta</div>
                 </div>
               </div>
             </div>

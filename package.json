@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "Landing page de servicios web, apps y dashboards",
+  "description": "Landing page de servicios web, apps y puntos de venta",
   "scripts": {
     "dev": "nuxt dev",
     "build": "nuxt build",

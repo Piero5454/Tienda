@@ -1,6 +1,6 @@
 # Plano Digital
 
-Landing page para promocionar servicios de desarrollo de sitios web, apps y dashboards, hecha con [Nuxt](https://nuxt.com).
+Landing page para promocionar servicios de desarrollo de sitios web, apps y puntos de venta para pequeños comercios, hecha con [Nuxt](https://nuxt.com).
 
 Sitio publicado: https://piero5454.github.io/Tienda/
 
@@ -18,8 +18,8 @@ public/                         Archivos que se copian tal cual (incluye .nojeky
 
 ## Personalizar
 
-- Correo, WhatsApp y horario: objeto `contact` en `app/components/ContactSection.vue`.
-- Número de WhatsApp del formulario: constante `WHATSAPP` en el mismo archivo.
+- Correo que recibe los mensajes del formulario: constante `EMAIL` en `app/components/ContactSection.vue`.
+  Los envíos pasan por [FormSubmit](https://formsubmit.co): el primer mensaje dispara un correo de activación que hay que confirmar.
 - Servicios, proceso, tecnologías y preguntas: arreglos al inicio de cada componente.
 - Colores y tipografías: variables al inicio de `app/assets/css/styles.css`.
 

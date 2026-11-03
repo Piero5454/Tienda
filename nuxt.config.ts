@@ -12,7 +12,7 @@ export default defineNuxtConfig({
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1, viewport-fit=cover' },
-        { name: 'description', content: 'Desarrollo de sitios web, apps y dashboards a medida para negocios en Chile.' }
+        { name: 'description', content: 'Desarrollo de sitios web, apps y puntos de venta a medida para pequeños comercios en Chile.' }
       ],
       link: [
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
