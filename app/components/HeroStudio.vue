@@ -1,10 +1,10 @@
 <script setup lang="ts">
 type Kind = 'web' | 'app' | 'pos'
 
-const tabs: { k: Kind; label: string; dim: string; note: string }[] = [
-  { k: 'web', label: 'Web', dim: '1440 px · escritorio', note: 'Ejemplo: sitio para un negocio local, con catálogo y contacto.' },
-  { k: 'app', label: 'App', dim: '390 px · móvil', note: 'Ejemplo: app de pedidos y agenda para el día a día.' },
-  { k: 'pos', label: 'Punto de venta', dim: 'Tablet o PC · caja', note: 'Ejemplo: caja para un almacén de barrio, con boleta y control de stock.' }
+const tabs: { k: Kind; label: string }[] = [
+  { k: 'web', label: 'Web' },
+  { k: 'app', label: 'App' },
+  { k: 'pos', label: 'Punto de venta' }
 ]
 
 const products = [
@@ -20,7 +20,6 @@ const products = [
 ]
 
 const active = ref<Kind>('web')
-const current = computed(() => tabs.find(t => t.k === active.value)!)
 </script>
 
 <template>
@@ -29,7 +28,7 @@ const current = computed(() => tabs.find(t => t.k === active.value)!)
       <div>
         <p class="label">Desarrollo a medida · Chile</p>
         <h1 style="margin-top:16px">Tu idea, construida como <em>web, app</em> o punto de venta.</h1>
-        <p class="lede">Diseño y programo herramientas digitales que tu negocio usa todos los días. Sin plantillas genéricas y con un precio cerrado desde el inicio.</p>
+        <p class="lede">Creo la página web, la app o el sistema de caja que tu negocio necesita para vender más y trabajar con menos enredos. A tu medida y con precio cerrado desde el primer día.</p>
         <div class="cta">
           <a class="btn btn-primary" href="#contacto">Cuéntame tu proyecto →</a>
           <a class="btn btn-ghost" href="#servicios">Ver qué hago</a>
@@ -54,8 +53,6 @@ const current = computed(() => tabs.find(t => t.k === active.value)!)
           >{{ t.label }}</button>
         </div>
         <div class="stage">
-          <div class="dim top">{{ current.dim }}</div>
-
           <div class="frame" :class="{ on: active === 'web' }" id="f-web" role="tabpanel" aria-labelledby="tab-web">
             <div class="browser">
               <div class="bar"><b></b><b></b><b></b><span class="url">https://www.tunegocio.cl</span></div>
@@ -115,7 +112,6 @@ const current = computed(() => tabs.find(t => t.k === active.value)!)
             </div>
           </div>
         </div>
-        <p class="stage-note">{{ current.note }}</p>
       </div>
     </div>
   </header>

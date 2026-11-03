@@ -1,9 +1,9 @@
 <script setup lang="ts">
 const steps = [
-  { title: 'Diagnóstico', text: 'Una reunión para entender tu negocio, tus usuarios y qué debe resolver el proyecto.', when: 'Semana 1' },
-  { title: 'Prototipo', text: 'Diseño navegable de las pantallas principales. Lo ajustamos hasta que lo apruebes.', when: 'Semana 1–2' },
-  { title: 'Desarrollo', text: 'Programación con entregas semanales en un enlace de prueba que puedes revisar.', when: 'Según alcance' },
-  { title: 'Lanzamiento', text: 'Publicación, capacitación para tu equipo y 30 días de soporte incluidos.', when: 'Entrega' }
+  { title: 'Diagnóstico', text: 'Conversamos sobre tu negocio, tus clientes y qué quieres lograr. Sin costo y sin compromiso.', when: 'Semana 1' },
+  { title: 'Prototipo', text: 'Te muestro cómo se verá antes de programar nada, y lo ajustamos hasta que te guste.', when: 'Semana 1–2' },
+  { title: 'Desarrollo', text: 'Cada semana te envío un enlace para que pruebes los avances y me des tu opinión.', when: 'Según alcance' },
+  { title: 'Lanzamiento', text: 'Lo dejo funcionando, enseño a tu equipo a usarlo y te acompaño 30 días sin costo extra.', when: 'Entrega' }
 ]
 </script>
 
@@ -13,7 +13,7 @@ const steps = [
       <SectionHead
         label="Proceso"
         title="Cómo trabajamos, paso a paso"
-        text="Ves avances cada semana y apruebas cada etapa antes de seguir."
+        text="Sin sorpresas ni letra chica: ves avances cada semana y nada avanza sin tu aprobación."
       />
       <div class="steps">
         <div v-for="s in steps" :key="s.title" class="step">

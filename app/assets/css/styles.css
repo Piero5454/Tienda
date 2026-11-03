@@ -82,10 +82,7 @@ body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-in
 .tabs button{font:500 var(--s-sm)/1 var(--f-mono); padding:9px 14px; border:0; border-radius:7px; background:transparent; color:var(--muted); cursor:pointer}
 .tabs button[aria-selected="true"]{background:var(--ink); color:var(--paper)}
 .stage{position:relative; height:380px}
-.dim{position:absolute; font-family:var(--f-mono); font-size:11px; color:var(--accent); display:flex; align-items:center; gap:6px}
-.dim.top{top:-2px; left:0; right:0; justify-content:center}
-.dim.top::before,.dim.top::after{content:""; flex:1; height:1px; background:var(--accent); opacity:.5}
-.frame{position:absolute; inset:20px 0 0 0; display:none; animation:rise .45s ease both}
+.frame{position:absolute; inset:0; display:none; animation:rise .45s ease both}
 .frame.on{display:block}
 @keyframes rise{from{opacity:.3; transform:translateY(8px)} to{opacity:1; transform:none}}
 @media (prefers-reduced-motion:reduce){ .frame{animation:none} .btn{transition:none} }
@@ -130,7 +127,6 @@ body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-in
 .pos .ticket .total{display:flex; justify-content:space-between; border-top:1px dashed var(--line); padding-top:8px; font:700 16px/1 var(--f-display); font-variant-numeric:tabular-nums}
 .pos .ticket .pay{background:var(--accent); color:var(--accent-ink); border-radius:6px; text-align:center; padding:8px; font-weight:600; font-size:12px}
 
-.stage-note{font-family:var(--f-mono); font-size:11px; color:var(--muted); margin-top:10px}
 
 /* Sections */
 section{padding-block:clamp(56px,8vw,96px); border-top:1px solid var(--line)}

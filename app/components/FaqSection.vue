@@ -1,9 +1,9 @@
 <script setup lang="ts">
 const faqs = [
-  { q: '¿Cuánto cuesta un proyecto?', a: 'Depende del alcance. Después de la primera reunión te envío un presupuesto cerrado en pesos chilenos, con lo que incluye y lo que no. Puedes pagar por etapas.' },
-  { q: '¿El sitio o la app quedan a mi nombre?', a: 'Sí. El dominio, el código y las cuentas de hosting quedan a tu nombre. Si un día quieres cambiar de proveedor, te llevas todo.' },
-  { q: '¿Qué pasa después de la entrega?', a: 'Incluyo 30 días de soporte para corregir cualquier detalle. Luego puedes contratar un plan mensual de mantención o pedir cambios puntuales.' },
-  { q: '¿El punto de venta funciona con lo que ya tengo?', a: 'Sí. Funciona en un computador, tablet o celular, y se conecta con lector de código de barras, impresora de boletas y tu máquina de pago. Si tienes tus productos en Excel, los cargo por ti.' }
+  { q: '¿Cuánto cuesta un proyecto?', a: 'Depende de lo que necesites. Después de la primera conversación te envío un presupuesto cerrado en pesos, que detalla qué incluye y qué no. El precio no cambia a mitad de camino y puedes pagar por etapas.' },
+  { q: '¿El sitio o la app quedan a mi nombre?', a: 'Sí, todo es tuyo: el dominio, el código y las cuentas quedan a tu nombre. Si algún día quieres trabajar con otra persona, te llevas todo sin problemas.' },
+  { q: '¿Qué pasa después de la entrega?', a: 'Durante 30 días corrijo cualquier detalle sin costo. Después puedes contratar un plan mensual de mantención o pedirme cambios solo cuando los necesites.' },
+  { q: '¿El punto de venta funciona con lo que ya tengo?', a: 'En la mayoría de los casos, sí. Funciona en computador, tablet o celular, y se conecta con lector de código de barras, impresora de boletas y máquina de pago. Si tienes tus productos en Excel, los cargo yo.' }
 ]
 </script>
 

@@ -2,15 +2,15 @@
 const services = [
   {
     tag: '/web', title: 'Sitios web', time: '2 a 4 semanas',
-    items: ['Landing pages y sitios corporativos', 'Tiendas online con Webpay, Mercado Pago o Flow', 'Optimizado para Google y celulares', 'Panel para que edites tus textos y productos']
+    items: ['Páginas para que tus clientes te encuentren en Google', 'Tiendas online con pago por Webpay, Mercado Pago o Flow', 'Se ven y cargan rápido en cualquier celular', 'Tú mismo cambias textos, fotos, precios y productos']
   },
   {
     tag: '/app', title: 'Aplicaciones', time: '6 a 12 semanas',
-    items: ['Apps para iOS y Android con una sola base de código', 'Reservas, pedidos, inventario o fuerza de venta', 'Inicio de sesión, notificaciones y pagos', 'Publicación en App Store y Google Play']
+    items: ['Una sola app para iPhone y Android', 'Pedidos, reservas, inventario o rutas de reparto', 'Avisos al celular, cuentas de usuario y pagos', 'Me encargo de publicarla en App Store y Google Play']
   },
   {
     tag: '/pos', title: 'Puntos de venta', time: '2 a 5 semanas',
-    items: ['Caja simple para almacenes, minimarkets, cafeterías y ferias', 'Boleta electrónica y pago con tarjeta (Transbank, Mercado Pago o SumUp)', 'Control de stock con aviso de productos por agotarse', 'Cierre de caja y reporte de ventas del día']
+    items: ['Caja fácil de usar para almacenes, minimarkets, cafeterías y ferias', 'Boleta electrónica y pago con tarjeta (Transbank, Mercado Pago o SumUp)', 'Stock al día, con aviso cuando un producto se está acabando', 'Cierre de caja y resumen de ventas en un clic']
   }
 ]
 </script>
@@ -20,8 +20,8 @@ const services = [
     <div class="wrap">
       <SectionHead
         label="Servicios"
-        title="Tres formas de llevar tu negocio a la pantalla"
-        text="Cada proyecto parte de lo que necesitas resolver: vender más, atender más rápido o tener tu negocio ordenado."
+        title="Lo que puedo hacer por tu negocio"
+        text="Partimos por lo que necesitas resolver, no por la tecnología: que te encuentren en internet, que tus clientes compren desde el celular o que cobrar en la caja sea rápido y sin errores."
       />
       <div class="services">
         <article v-for="s in services" :key="s.tag" class="svc">

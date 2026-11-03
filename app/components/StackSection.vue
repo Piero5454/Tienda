@@ -7,8 +7,8 @@ const stack = ['React', 'Next.js', 'React Native', 'Node.js', 'PostgreSQL', 'Sup
     <div class="wrap">
       <SectionHead
         label="Tecnología"
-        title="Herramientas modernas y probadas"
-        text="Elijo la tecnología según tu proyecto, priorizando que sea rápida, segura y fácil de mantener."
+        title="Tecnología moderna y confiable"
+        text="No necesitas saber de programación: elijo por ti las herramientas para que tu proyecto sea rápido, seguro y fácil de mantener en el tiempo."
       />
       <div class="stack">
         <span v-for="t in stack" :key="t">{{ t }}</span>

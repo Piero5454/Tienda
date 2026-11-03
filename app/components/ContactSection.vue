@@ -124,7 +124,7 @@ onMounted(() => {
       <div>
         <p class="label">Contacto</p>
         <h2 style="margin-top:12px">Cuéntame qué necesitas y te respondo con una propuesta</h2>
-        <p class="intro">Completa el formulario y te escribo a tu correo con los próximos pasos.</p>
+        <p class="intro">Cuéntame en pocas palabras qué te gustaría lograr. Te escribo para agendar una conversación y, después, te envío una propuesta con precio y plazos.</p>
         <ul class="perks">
           <li>Respuesta en 24 horas hábiles</li>
           <li>Primera reunión sin costo</li>
