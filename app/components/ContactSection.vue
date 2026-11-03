@@ -135,6 +135,7 @@ onMounted(() => {
     estado.value = 'ok'
     aviso.value = '¡Gracias! Recibí tu mensaje y te responderé dentro de 24 horas hábiles.'
     url.searchParams.delete('enviado')
+    url.hash = ''
     history.replaceState(null, '', url.toString())
   }
 })
