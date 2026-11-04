@@ -31,11 +31,9 @@ const active = ref<Kind>('web')
         <p class="lede">Creo la página web, la app o el sistema de caja que tu negocio necesita para vender más y trabajar con menos enredos. A tu medida y con precio cerrado desde el primer día.</p>
         <div class="cta">
           <a class="btn btn-primary" href="#contacto">Cuéntame tu proyecto →</a>
-          <a class="btn btn-ghost" href="#servicios">Ver qué hago</a>
+          <NuxtLink class="btn btn-primary" to="/demo-punto-de-venta">▶ Probar una demo</NuxtLink>
         </div>
-        <NuxtLink class="demo-pill" to="/demo-punto-de-venta">
-          <b>Demo</b> Prueba gratis un sistema de caja desde tu celular →
-        </NuxtLink>
+        <p class="demo-hint">Prueba gratis una caja de almacén o una app de reservas, desde tu celular.</p>
         <div class="meta">
           <span>Respuesta en 24 h hábiles</span>
           <span>Presupuesto en CLP + IVA</span>

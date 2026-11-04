@@ -47,7 +47,8 @@ const otros = rubros.filter(o => o.slug !== r.slug)
           <p class="lede">{{ r.lede }}</p>
           <div class="cta">
             <a class="btn btn-primary" href="#contacto">Cotizar para mi negocio →</a>
-            <NuxtLink v-if="r.tipo === 'Punto de venta'" class="btn btn-ghost" to="/demo-punto-de-venta">Probar la demo</NuxtLink>
+            <NuxtLink v-if="r.slug === 'almacenes'" class="btn btn-primary" to="/demo-punto-de-venta">▶ Probar la demo</NuxtLink>
+            <NuxtLink v-else-if="r.slug === 'peluquerias'" class="btn btn-primary" to="/demo-app-reservas">▶ Probar la demo</NuxtLink>
             <a v-else class="btn btn-ghost" href="#incluye">Ver qué incluye</a>
           </div>
           <div class="meta">

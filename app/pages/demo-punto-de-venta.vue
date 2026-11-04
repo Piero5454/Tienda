@@ -15,7 +15,8 @@ useHead({ link: url ? [{ rel: 'canonical', href: url, key: 'canonical' }] : [] }
 
     <header class="demo-head">
       <div class="wrap">
-        <p class="label">Demo · Punto de venta</p>
+        <DemoSwitch />
+        <p class="label" style="margin-top:28px">Demo · Punto de venta</p>
         <h1>Prueba una caja de almacén, aquí mismo</h1>
         <p class="lede">Agrega productos, cobra en efectivo o con tarjeta y mira cómo se descuenta el stock y cómo queda el cierre de caja. Es una demostración: no cobra nada y se reinicia al recargar la página.</p>
         <ol class="demo-steps">
