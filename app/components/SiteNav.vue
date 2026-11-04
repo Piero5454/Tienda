@@ -6,6 +6,7 @@ const links = [
   { hash: '#sobre-mi', label: 'Sobre mí' },
   { hash: '#preguntas', label: 'Preguntas' }
 ]
+const { abrir } = useCotizador()
 </script>
 
 <template>
@@ -17,7 +18,7 @@ const links = [
       </ul>
       <div class="nav-cta">
         <NuxtLink class="btn btn-primary" to="/demo-punto-de-venta">▶ <span class="lg">Ver demo</span><span class="sm">Demo</span></NuxtLink>
-        <a class="btn btn-primary" href="#contacto"><span class="lg">Cotizar proyecto</span><span class="sm">Cotizar</span></a>
+        <button type="button" class="btn btn-primary" @click="abrir"><span class="lg">Cotizar proyecto</span><span class="sm">Cotizar</span></button>
       </div>
     </div>
   </nav>

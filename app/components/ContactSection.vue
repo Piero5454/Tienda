@@ -38,6 +38,13 @@ const form = reactive({
 })
 
 const { $evento } = useNuxtApp()
+const { resumen, abrir: abrirCotizador } = useCotizador()
+// Si el visitante usó el cotizador y elige "Prefiero el formulario", se precarga lo que eligió
+watch(resumen, (r) => {
+  if (!r) return
+  if (!form.mensaje.trim() || form.mensaje.startsWith('Cotizador:')) form.mensaje = `Cotizador: ${r.texto}`
+  form.tipos = [r.tipo]
+})
 const nombreInput = ref<HTMLInputElement | null>(null)
 const correoInput = ref<HTMLInputElement | null>(null)
 const estado = ref<'idle' | 'enviando' | 'ok' | 'error'>('idle')
@@ -153,7 +160,8 @@ onMounted(() => {
           <li>Primera reunión sin costo</li>
           <li>Presupuesto cerrado en pesos chilenos</li>
         </ul>
-        <p class="wa-alt">¿Prefieres conversar por chat? <a :href="whatsappUrl('Hola, vi tu página y me gustaría cotizar un proyecto.')" target="_blank" rel="noopener" @click="$evento?.('whatsapp')">Escríbeme por WhatsApp</a></p>
+        <p class="wa-alt">¿Quieres un precio estimado al tiro? <button type="button" class="link-btn" @click="abrirCotizador">Usa el cotizador</button></p>
+        <p class="wa-alt" style="margin-top:8px">¿Prefieres conversar por chat? <a :href="whatsappUrl('Hola, vi tu página y me gustaría cotizar un proyecto.')" target="_blank" rel="noopener" @click="$evento?.('whatsapp')">Escríbeme por WhatsApp</a></p>
       </div>
       <form novalidate @submit.prevent="onSubmit">
         <div class="field">
