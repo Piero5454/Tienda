@@ -33,6 +33,9 @@ const active = ref<Kind>('web')
           <a class="btn btn-primary" href="#contacto">Cuéntame tu proyecto →</a>
           <a class="btn btn-ghost" href="#servicios">Ver qué hago</a>
         </div>
+        <NuxtLink class="demo-pill" to="/demo-punto-de-venta">
+          <b>Demo</b> Prueba gratis un sistema de caja desde tu celular →
+        </NuxtLink>
         <div class="meta">
           <span>Respuesta en 24 h hábiles</span>
           <span>Presupuesto en CLP + IVA</span>

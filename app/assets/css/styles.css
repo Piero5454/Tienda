@@ -75,6 +75,10 @@ body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-in
 .hero .meta span{font-family:var(--f-mono); font-size:var(--s-xs); color:var(--muted); display:flex; align-items:center; gap:8px}
 .hero .meta span::before{content:""; width:7px; height:7px; border-radius:50%; background:var(--ok)}
 @media (max-width:900px){ .hero .wrap{grid-template-columns:1fr} }
+.demo-pill{display:inline-flex; align-items:center; gap:10px; margin-top:20px; padding:8px 14px 8px 8px; border:1px solid color-mix(in srgb,var(--signal) 45%,var(--line)); border-radius:999px; background:var(--surface); font-size:var(--s-sm); text-decoration:none; color:var(--ink)}
+.demo-pill b{font:600 var(--s-xs)/1 var(--f-mono); text-transform:uppercase; letter-spacing:.06em; background:var(--signal); color:#fff; padding:5px 8px; border-radius:999px}
+.demo-pill:hover{border-color:var(--signal)}
+.nav ul a.nav-demo{color:var(--accent); font-weight:600}
 
 /* Mockup switcher */
 .studio{position:relative}
