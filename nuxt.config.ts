@@ -22,7 +22,7 @@ export default defineNuxtConfig({
     public: {
       siteUrl,
       // Código de tu cuenta GoatCounter (lo que va antes de .goatcounter.com). Vacío = sin contador.
-      goatcounter: 'planodigital'
+      goatcounter: 'piero5454'
     }
   },
   nitro: { prerender: { routes: [...rubros.map(r => `/${r.slug}`), '/demo-punto-de-venta'] } },
