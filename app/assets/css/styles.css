@@ -146,7 +146,7 @@ section{padding-block:clamp(56px,8vw,96px); border-top:1px solid var(--line)}
 @media (max-width:760px){ .sec-head{grid-template-columns:1fr; gap:10px} }
 
 .services{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
-.svc{background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:26px; display:grid; grid-template-rows:auto auto 1fr auto; gap:14px}
+.svc{background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:26px; display:grid; grid-template-rows:auto auto auto 1fr auto auto; gap:14px}
 .svc .tag{font-family:var(--f-mono); font-size:var(--s-xs); color:var(--accent)}
 .svc h3{font-size:1.6rem}
 .svc ul{margin:0; padding:0; list-style:none; display:grid; gap:9px; font-size:var(--s-sm); align-content:start}
@@ -274,6 +274,38 @@ footer .wrap{display:flex; flex-wrap:wrap; justify-content:space-between; gap:12
 .rubro-links{display:flex; flex-wrap:wrap; gap:12px}
 @media (max-width:900px){ .rubro-card{justify-self:stretch; max-width:none} .pains,.feats{grid-template-columns:1fr 1fr} }
 @media (max-width:640px){ .pains,.feats{grid-template-columns:1fr} }
+
+/* Brillo que sigue al mouse (v-spotlight) */
+.spot{position:relative; isolation:isolate}
+@media (hover:hover) and (pointer:fine){
+  .spot::after{content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none; z-index:-1; opacity:0; transition:opacity .3s;
+    background:radial-gradient(280px circle at var(--mx,50%) var(--my,50%), color-mix(in srgb,var(--accent) 13%,transparent), transparent 70%)}
+  .spot:hover::after{opacity:1}
+  .spot:hover{border-color:color-mix(in srgb,var(--accent) 35%,var(--line))}
+}
+
+/* Sección de demos en la portada */
+.demos{display:grid; grid-template-columns:1.55fr 1fr; gap:20px}
+.demo-card{display:grid; grid-template-rows:1fr auto; background:var(--surface); border:1px solid var(--line); border-radius:16px; overflow:hidden; text-decoration:none; color:inherit; transition:border-color .2s, box-shadow .3s}
+.demo-card:hover{box-shadow:0 24px 50px -28px rgb(31 42 36 / .35)}
+.demo-stage{position:relative; height:330px; padding:28px 28px 0; perspective:1100px; overflow:hidden;
+  background:radial-gradient(120% 90% at 50% 0%, color-mix(in srgb,var(--accent) 12%,var(--paper)), var(--paper) 70%); border-bottom:1px solid var(--line)}
+.demo-tilt{height:100%; transform:rotateX(var(--rx, 7deg)) rotateY(var(--ry, 0deg)); transform-origin:50% 100%; transition:transform .25s ease-out; will-change:transform}
+.demo-tilt img{display:block; border-radius:12px 12px 0 0; box-shadow:0 20px 40px -18px rgb(0 0 0 / .35); background:#fff}
+.is-pos .demo-tilt img{width:100%; height:auto; object-fit:cover; object-position:top; border:1px solid var(--line)}
+.is-app .demo-tilt{display:flex; justify-content:center}
+.is-app .demo-tilt img{width:min(240px,80%); height:auto; border-radius:34px 34px 0 0; background:transparent}
+.live{position:absolute; top:14px; left:14px; z-index:2; display:inline-flex; align-items:center; gap:8px; padding:7px 12px; border-radius:999px; background:var(--surface); border:1px solid var(--line); font:600 var(--s-xs)/1 var(--f-body); box-shadow:0 4px 14px rgb(0 0 0 / .08)}
+.live i{width:8px; height:8px; border-radius:50%; background:#22B35E; box-shadow:0 0 0 0 rgb(34 179 94 / .6); animation:live 1.8s infinite}
+@keyframes live{0%{box-shadow:0 0 0 0 rgb(34 179 94 / .55)} 70%{box-shadow:0 0 0 9px rgb(34 179 94 / 0)} 100%{box-shadow:0 0 0 0 rgb(34 179 94 / 0)}}
+.demo-info{display:grid; gap:8px; padding:20px 24px 24px}
+.demo-info .tag{font-family:var(--f-mono); font-size:var(--s-xs); color:var(--signal); text-transform:uppercase; letter-spacing:.06em}
+.demo-info h3{font-size:1.4rem}
+.demo-info p{color:var(--muted); font-size:var(--s-sm)}
+.demo-go{margin-top:4px; font-weight:600; color:var(--accent); font-size:var(--s-sm)}
+.demo-card:hover .demo-go{text-decoration:underline}
+@media (prefers-reduced-motion:reduce){ .demo-tilt{transition:none} .live i{animation:none} }
+@media (max-width:860px){ .demos{grid-template-columns:1fr} .demo-stage{height:260px; padding:24px 18px 0} }
 
 /* Demos */
 .demo-switch{display:inline-flex; gap:4px; padding:4px; background:var(--surface); border:1px solid var(--line); border-radius:12px; flex-wrap:wrap}

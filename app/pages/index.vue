@@ -3,6 +3,7 @@
     <SiteNav />
     <HeroStudio />
     <ServicesSection />
+    <DemosSection />
     <ExamplesSection />
     <ProcessSection />
     <AboutSection />

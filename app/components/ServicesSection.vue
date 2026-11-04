@@ -26,7 +26,7 @@ const services = [
         text="Partimos por lo que necesitas resolver, no por la tecnología: que te encuentren en internet, que tus clientes compren desde el celular o que cobrar en la caja sea rápido y sin errores."
       />
       <div class="services">
-        <article v-for="s in services" :key="s.tag" class="svc">
+        <article v-for="s in services" :key="s.tag" v-spotlight class="svc">
           <span class="tag">{{ s.tag }}</span>
           <h3>{{ s.title }}</h3>
           <p v-if="s.price" class="price"><small>Desde</small> {{ s.price }} <small>+ IVA</small></p>

@@ -44,7 +44,7 @@ const examples = [
         text="Tres casos típicos de pequeños negocios: el problema de todos los días y cómo se resuelve con una herramienta hecha a medida."
       />
       <div class="examples">
-        <article v-for="e in examples" :key="e.negocio" class="ex">
+        <article v-for="e in examples" :key="e.negocio" v-spotlight class="ex">
           <span class="tag">{{ e.tipo }}</span>
           <h3>{{ e.negocio }}</h3>
           <div class="ex-block">

@@ -90,7 +90,7 @@ const otros = rubros.filter(o => o.slug !== r.slug)
           text="Esto es lo que suele necesitar un negocio como el tuyo. En la primera conversación vemos qué te sirve, qué sobra y qué falta."
         />
         <div class="feats">
-          <div v-for="f in r.incluye" :key="f.t" class="feat">
+          <div v-for="f in r.incluye" :key="f.t" v-spotlight class="feat">
             <h3>{{ f.t }}</h3>
             <p>{{ f.d }}</p>
           </div>
