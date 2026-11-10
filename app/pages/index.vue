@@ -7,7 +7,7 @@
     <ExamplesSection />
     <ProcessSection />
     <AboutSection />
-    <StackSection />
+    <IntegracionesSection />
     <FaqSection />
     <ContactSection />
     <SiteFooter />
