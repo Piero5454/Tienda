@@ -39,7 +39,7 @@ export default defineNuxtConfig({
         .map(p => `  <url><loc>${abs(p)}</loc><lastmod>${hoy}</lastmod></url>`).join('\n')
       await writeFile(join(dir, 'sitemap.xml'),
         `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`)
-      await writeFile(join(dir, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${abs('sitemap.xml')}\n`)
+      await writeFile(join(dir, 'robots.txt'), `User-agent: *\nAllow: /\n# Bloquea solo la carpeta técnica /_nuxt/ (el $ deja permitidos sus archivos)\nDisallow: /_nuxt/$\n\nSitemap: ${abs('sitemap.xml')}\n`)
     }
   },
   app: {

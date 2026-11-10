@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+# Bloquea solo la carpeta técnica /_nuxt/ (el $ deja permitidos sus archivos)
+Disallow: /_nuxt/$
