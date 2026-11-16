@@ -34,6 +34,6 @@ export default defineNuxtPlugin((nuxtApp) => {
     })
   })
 
-  nuxtApp.hook('app:mounted', preparar)
-  nuxtApp.hook('page:finish', preparar)
+  nuxtApp.hook('app:mounted', () => { preparar() })
+  nuxtApp.hook('page:finish', () => { preparar() })
 })

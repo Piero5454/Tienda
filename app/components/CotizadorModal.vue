@@ -63,7 +63,7 @@ function elegirSolucion(s: Solucion) {
 }
 function siguiente() {
   const i = indice.value
-  if (i < pasos.value.length - 1) paso.value = pasos.value[i + 1]
+  if (i < pasos.value.length - 1) paso.value = pasos.value[i + 1]!
   if (paso.value === 'resultado') {
     resumen.value = { tipo: sol.value!.tipoFormulario, texto: textoResumen.value }
     $evento?.('cotizador-resultado')
@@ -71,7 +71,7 @@ function siguiente() {
 }
 function atras() {
   const i = indice.value
-  if (i > 0) paso.value = pasos.value[i - 1]
+  if (i > 0) paso.value = pasos.value[i - 1]!
 }
 function cerrar() { abierto.value = false }
 function reiniciar() {

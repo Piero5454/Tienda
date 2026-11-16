@@ -37,7 +37,7 @@ export default defineNuxtPlugin(() => {
     contar({ path, title: document.title })
   }, 150)
   router.isReady().then(vista)
-  nuxtApp.hook('page:finish', vista)
+  nuxtApp.hook('page:finish', () => { vista() })
 
   // Eventos: aparecen en el panel como "evento-..." junto a la página donde ocurrieron
   return {

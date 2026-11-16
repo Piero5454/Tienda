@@ -48,10 +48,10 @@ function citasBase(): Cita[] {
       while (i < HORAS.length) {
         const h = hash(dia.key + p.id + i)
         if (h % 5 < 2) {
-          const s = servicios[h % servicios.length]
+          const s = servicios[h % servicios.length]!
           const bloques = s.min / 30
           if (i + bloques <= HORAS.length) {
-            out.push({ dia: dia.key, hora: HORAS[i], servicio: s, prof: p, cliente: clientes[h % clientes.length] })
+            out.push({ dia: dia.key, hora: HORAS[i]!, servicio: s, prof: p, cliente: clientes[h % clientes.length]! })
             i += bloques
             continue
           }
@@ -66,11 +66,11 @@ function citasBase(): Cita[] {
 const citas = ref<Cita[]>(citasBase())
 const paso = ref<'servicio' | 'prof' | 'hora' | 'datos' | 'listo'>('servicio')
 const sel = reactive<{ servicio: Servicio | null; prof: Profesional | null; dia: string; hora: string; nombre: string; telefono: string }>({
-  servicio: null, prof: null, dia: dias[0].key, hora: '', nombre: '', telefono: ''
+  servicio: null, prof: null, dia: dias[0]!.key, hora: '', nombre: '', telefono: ''
 })
 const asignado = ref<Profesional | null>(null)
 const aviso = ref(false)
-const diaNegocio = ref(dias[0].key)
+const diaNegocio = ref(dias[0]!.key)
 let timer: ReturnType<typeof setTimeout> | undefined
 
 const ocupado = (dia: string, p: Profesional, idx: number) => citas.value.some(c => {
@@ -84,7 +84,7 @@ function libre(dia: string, p: Profesional, idx: number, s: Servicio) {
   if (idx + bloques > HORAS.length) return false
   const d = dias.find(x => x.key === dia)!
   if (d.hoy) {
-    const [hh, mm] = HORAS[idx].split(':').map(Number)
+    const [hh = 0, mm = 0] = HORAS[idx]!.split(':').map(Number)
     if (hh * 60 + mm <= hoy.getHours() * 60 + hoy.getMinutes() + 30) return false
   }
   for (let k = 0; k < bloques; k++) if (ocupado(dia, p, idx + k)) return false
@@ -119,16 +119,16 @@ function confirmar() {
 }
 
 function otra() {
-  Object.assign(sel, { servicio: null, prof: null, hora: '', dia: dias[0].key })
+  Object.assign(sel, { servicio: null, prof: null, hora: '', dia: dias[0]!.key })
   aviso.value = false
   paso.value = 'servicio'
 }
 
 function reiniciar() {
   citas.value = citasBase()
-  Object.assign(sel, { servicio: null, prof: null, hora: '', dia: dias[0].key, nombre: '', telefono: '' })
+  Object.assign(sel, { servicio: null, prof: null, hora: '', dia: dias[0]!.key, nombre: '', telefono: '' })
   aviso.value = false
-  diaNegocio.value = dias[0].key
+  diaNegocio.value = dias[0]!.key
   paso.value = 'servicio'
   vista.value = 'cliente'
 }

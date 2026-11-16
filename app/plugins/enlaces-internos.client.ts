@@ -29,7 +29,7 @@ export default defineNuxtPlugin((nuxtApp) => {
   window.addEventListener('hashchange', () => { if (irA(location.hash)) setTimeout(limpiar, 50) })
 
   // Llegando desde otra página (p. ej. /almacenes → Servicios) o con un enlace compartido con #
-  const limpiarDespues = () => setTimeout(limpiar, 800)
+  const limpiarDespues = () => { setTimeout(limpiar, 800) }
   nuxtApp.hook('app:mounted', limpiarDespues)
   router.afterEach((to) => { if (to.hash) nuxtApp.hooks.hookOnce('page:finish', limpiarDespues) })
 })
